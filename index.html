@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Basic Calculator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f0f7;
+            display: flex;
+            justify-content: center;
+            padding-top: 60px;
+            margin: 0;
+        }
+        .calculator-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            width: 320px;
+        }
+        h3 {
+            text-align: center;
+            margin-top: 0;
+        }
+        .input-group {
+            margin: 14px 0;
+        }
+        label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 4px;
+        }
+        input {
+            width: 100%;
+            padding: 7px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        button {
+            background-color: #2038d8;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1427b0;
+        }
+        #result-box {
+            background-color: #eeeeee;
+            padding:14px;
+            border-radius:4px;
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-card">
+        <h3>A Basic Calculator</h3>
+
+        <div class="input-group">
+            <label>Enter Your First Number:</label>
+            <input type="text" id="num1">
+        </div>
+        <div class="input-group">
+            <label>Enter Your Second Number:</label>
+            <input type="text" id="num2">
+        </div>
+        <p style="font-size:13px">Choose a basic arithmetic operation from the following options below:</p>
+
+        <div class="btn-row">
+            <button onclick="calculate('add')">Add</button>
+            <button onclick="calculate('subtract')">Subtract</button>
+            <button onclick="calculate('multiply')">Multiply</button>
+            <button onclick="calculate('divide')">Divide</button>
+        </div>
+
+        <div id="result-box">Here is the result: </div>
+    </div>
+
+    <script>
+        function calculate(operation) {
+            const input1 = document.getElementById("num1").value;
+            const input2 = document.getElementById("num2").value;
+            const resultDom = document.getElementById("result-box");
+
+            const n1 = parseFloat(input1);
+            const n2 = parseFloat(input2);
+
+            if (isNaN(n1) || isNaN(n2)) {
+                resultDom.innerText = "Here is the result: Error! Please enter valid numbers.";
+                return;
+            }
+
+            let res;
+            switch (operation) {
+                case "add":
+                    res = n1 + n2;
+                    break;
+                case "subtract":
+                    res = n1 - n2;
+                    break;
+                case "multiply":
+                    res = n1 * n2;
+                    break;
+                case "divide":
+                    if (n2 === 0) {
+                        resultDom.innerText = "Here is the result: Error! Cannot divide by zero.";
+                        return;
+                    }
+                    res = n1 / n2;
+                    break;
+            }
+            resultDom.innerText = `Here is the result: ${res}`;
+        }
+    </script>
+</body>
+</html>

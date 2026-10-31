@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Page</title>
+</head>
+<body>
+    <!-- 第2步：标题 -->
+    <h1 id="myHeading">Welcome!</h1>
+
+    <!-- 第3步：第一个按钮 -->
+    <button id="myButton">Click Me</button>
+    <!-- Bonus第9步：第二个按钮，恢复原样 -->
+    <button id="resetButton">Change Back</button>
+
+    <!-- 第4步：script放在</body>之前 -->
+    <script>
+        // 第5步：getElementById拿到两个按钮、标题
+        const myButton = document.getElementById("myButton");
+        const resetButton = document.getElementById("resetButton");
+        const heading = document.getElementById("myHeading");
+
+        // 第6步：addEventListener 监听点击
+        myButton.addEventListener("click", function(){
+            // 第7步：修改标题文字 + Bonus第8步：修改颜色
+            heading.textContent = "JavaScript is fun!";
+            heading.style.color = "darkorange";
+        });
+
+        // Bonus：恢复按钮的点击事件
+        resetButton.addEventListener("click", function(){
+            heading.textContent = "Welcome!";
+            heading.style.color = "black";
+        });
+    </script>
+</body>
+</html>
